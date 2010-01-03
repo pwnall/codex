@@ -48,10 +48,13 @@ module Codex::CodeFilter
 
     def filter_inline(text,args)
       desc = Descriptor.new(args)
-      format_code(desc, text)
+      format_code(desc, text.dup)
     end
 
     def format_code(desc, code)
+      [['&', '&amp;'], ['<', '&lt;'], ['>', '&gt;']].each do |entity|
+        code.gsub! entity.first, entity.last
+      end
       %{<div class="#{desc.css_class}">\n} +
       %{\n<pre name="code" class="#{desc.lang}:nogutter:nocontrols">#{code}} +
       %{</pre></div>} +
