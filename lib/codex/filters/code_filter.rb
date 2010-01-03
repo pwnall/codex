@@ -55,9 +55,9 @@ module Codex::CodeFilter
       [['&', '&amp;'], ['<', '&lt;'], ['>', '&gt;']].each do |entity|
         code.gsub! entity.first, entity.last
       end
-      %{<div class="#{desc.css_class}">\n} +
-      %{\n<pre name="code" class="#{desc.lang}:nogutter:nocontrols">#{code}} +
-      %{</pre></div>} +
+      %|<div class="#{desc.css_class}"><notextile>| +
+      %|<pre name="code" class="#{desc.lang}:nogutter:nocontrols">#{code}| +
+      %|</pre></notextile></div>| +
       format_link(desc)
     end
     
