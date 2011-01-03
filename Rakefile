@@ -1,3 +1,4 @@
+$:.unshift File.join(File.dirname(__FILE__))
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
 
 # Hoe insists on reading every damn file looking for a version string.
